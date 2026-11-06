@@ -1296,6 +1296,14 @@ a.icon-card:hover {
   gap: var(--space-4);
 }
 
+/* Repeated clicks on the controls must not select the photos. */
+.gallery__stage,
+.gallery__controls,
+.lightbox {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .gallery__stage {
   width: 100%;
   display: flex;
