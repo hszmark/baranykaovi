@@ -19,7 +19,7 @@
       target.replaceChildren("Frissítve: ", time);
       target.hidden = false;
     } catch {
-      // Unreachable file or file:// page: the link still works, the date stays hidden.
+      return;
     }
   }
 

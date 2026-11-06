@@ -38,8 +38,6 @@
     }, { passive: true });
   }
 
-  // Reads the server's auto-generated directory listing (Apache, LiteSpeed, nginx,
-  // Python http.server). This is the only function that knows where images come from.
   async function listImages(folderPath) {
     const response = await fetch(folderPath, { cache: "no-cache" });
     if (!response.ok) throw new Error(`${folderPath}: HTTP ${response.status}`);
@@ -177,10 +175,11 @@
 
     function show(i) {
       index = wrap(i);
-      photo.src = images[index].src;
-      photo.alt = altFor(index);
-      open.setAttribute("aria-label", `${altFor(index)} – nagyítás`);
-      counter.textContent = `${index + 1} / ${count}`;
+      const slide = gallery.slide();
+      photo.src = slide.src;
+      photo.alt = slide.alt;
+      open.setAttribute("aria-label", `${slide.alt} – nagyítás`);
+      counter.textContent = slide.counter;
       for (const preview of previews) preview.image.src = images[wrap(index + preview.direction)].src;
       dots.forEach((dot, d) => dot.setAttribute("aria-current", String(d === index)));
       lightbox.sync(gallery);
