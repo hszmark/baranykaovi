@@ -6,7 +6,7 @@ Static site for https://baranykaovi.hu. The contents of `honlap/` are uploaded a
 
 - Code is English: CSS classes, JS identifiers, code comments, commit messages and PR text.
 - Everything visitors or staff read is Hungarian: page text, `alt` text, ARIA labels and `README.md` (the staff guide).
-- Names staff see or type are Hungarian ASCII: page files (`szuloknek.html`), content folders (`kepek/galeria/kornyezetunk/`) and document files (`hazirend.pdf`).
+- Names staff see or type are Hungarian ASCII: page files (`szuloknek.html`), content folders (`tartalom/kepek/galeria/kornyezetunk/`) and document files (`hazirend.pdf`).
 
 ## Content
 
@@ -25,9 +25,9 @@ When a page is added, removed or renamed:
 - Update the main navigation and footer links on every page.
 - Give the page the same `<head>` set as the others: `<title>` ("Oldal – Bárányka Keresztyén Óvoda"), `meta description`, `canonical`, the `og:*` tags and `twitter:card`. `og:title` and `og:description` match the title and description, and `canonical` and `og:url` use the absolute `https://baranykaovi.hu/` URL.
 
-Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek` from `szuloknek.html` and 301-redirects `/szuloknek.html` to `/szuloknek` and `/index.html` to `/`. Internal links, `canonical`, `og:url` and `sitemap.xml` use the extensionless form (`href="szuloknek"`, `href="./"` for the home page). A page and a folder must never share a name: the server adds a trailing slash to the folder before the rewrite runs, so the page becomes unreachable. That is why the PDFs live in `fajlok/`, not `dokumentumok/`.
+Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek` from `szuloknek.html` and 301-redirects `/szuloknek.html` to `/szuloknek` and `/index.html` to `/`. Internal links, `canonical`, `og:url` and `sitemap.xml` use the extensionless form (`href="szuloknek"`, `href="./"` for the home page). A page and a folder must never share a name: the server adds a trailing slash to the folder before the rewrite runs, so the page becomes unreachable. That is why everything staff edit lives under `honlap/tartalom/` (`kepek/`, `dokumentumok/`); the other top-level folders (`css/`, `js/`, `fonts/`) have English names that cannot match a Hungarian page name.
 
-`honlap/kepek/og-image.png` (1200×630) shows the header logo on `--color-bg`. To regenerate it, render a 1200×630 page that loads `css/tokens.css` and `css/main.css` and shows the `.logo` markup, then screenshot it with headless Chrome (`--window-size=1200,630 --screenshot`).
+`honlap/tartalom/kepek/og-image.png` (1200×630) shows the header logo on `--color-bg`. To regenerate it, render a 1200×630 page that loads `css/tokens.css` and `css/main.css` and shows the `.logo` markup, then screenshot it with headless Chrome (`--window-size=1200,630 --screenshot`).
 
 ## Styling
 
@@ -45,8 +45,8 @@ Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek`
 
 ## Documents and galleries
 
-- Every `fajlok/*.pdf` link must point to a file that exists in `honlap/fajlok/`. The "Frissítve" date is read from the file's `Last-Modified` header by `js/documents.js`, so replacements keep the same filename.
-- Gallery images are picked up automatically from the folders under `honlap/kepek/galeria/` and sorted by filename (`js/gallery.js`).
+- Every `tartalom/dokumentumok/*.pdf` link must point to a file that exists in `honlap/tartalom/dokumentumok/`. The "Frissítve" date is read from the file's `Last-Modified` header by `js/documents.js`, so replacements keep the same filename.
+- Gallery images are picked up automatically from the folders under `honlap/tartalom/kepek/galeria/` and sorted by filename (`js/gallery.js`).
 - Document filenames never contain dates; the date comes from the file itself.
 - Gallery photos are JPG or WebP (never HEIC), at most about 2000px on the long edge, with an `01_`, `02_` … prefix that sets the order.
 
