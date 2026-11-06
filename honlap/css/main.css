@@ -834,7 +834,8 @@ button {
 }
 
 .schedule__time {
-  flex: 0 0 6.5rem;
+  flex: 0 0 8.5rem;
+  white-space: nowrap;
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: 600;
