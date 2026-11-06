@@ -1,0 +1,172 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1100,
+      "title": "Arculati lap"
+    },
+    "Kezdolap.dc.html": {
+      "x": 1360,
+      "y": 0,
+      "w": 1440,
+      "h": 2400,
+      "title": "Kezdőlap – asztali",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Mobil.dc.html": {
+      "x": 2880,
+      "y": 0,
+      "w": 390,
+      "h": 2400,
+      "title": "Kezdőlap – telefon",
+      "is_interactive": true
+    },
+    "Dokumentumok.dc.html": {
+      "x": 3350,
+      "y": 0,
+      "w": 1440,
+      "h": 1640,
+      "title": "Dokumentumok",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Logo.dc.html": {
+      "x": 4870,
+      "y": 0,
+      "w": 440,
+      "h": 110,
+      "title": "Logó (közös elem)"
+    },
+    "Fejlec.dc.html": {
+      "x": 4870,
+      "y": 230,
+      "w": 1440,
+      "h": 90,
+      "title": "Fejléc (közös elem)"
+    },
+    "Lablec.dc.html": {
+      "x": 4870,
+      "y": 440,
+      "w": 1440,
+      "h": 300,
+      "title": "Lábléc (közös elem)"
+    },
+    "Kuldetesunk.dc.html": {
+      "x": 0,
+      "y": 3300,
+      "w": 1440,
+      "h": 3000,
+      "title": "Küldetésünk",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Celjaink.dc.html": {
+      "x": 1520,
+      "y": 3300,
+      "w": 1440,
+      "h": 1500,
+      "title": "Céljaink",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Ovodarol.dc.html": {
+      "x": 3040,
+      "y": 3300,
+      "w": 1440,
+      "h": 4300,
+      "title": "Óvodánkról – Az óvodáról",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "OvodaiElet.dc.html": {
+      "x": 4560,
+      "y": 3300,
+      "w": 1440,
+      "h": 3900,
+      "title": "Óvodánkról – Óvodai életünk",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Szulok.dc.html": {
+      "x": 6080,
+      "y": 3300,
+      "w": 1440,
+      "h": 2300,
+      "title": "Szülőknek",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Kapcsolat.dc.html": {
+      "x": 7600,
+      "y": 3300,
+      "w": 1440,
+      "h": 1500,
+      "title": "Kapcsolat",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Galeria.dc.html": {
+      "x": 4870,
+      "y": 860,
+      "w": 780,
+      "h": 420,
+      "title": "Képnézegető (közös elem)",
+      "is_interactive": true
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-03T15:40:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "cim": {
+      "kind": "title1",
+      "maxW": 4790,
+      "text": "Bárányka Keresztyén Óvoda – előzetes arculati minta",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "kozos": {
+      "kind": "title1",
+      "maxW": 1440,
+      "text": "Közös elemek",
+      "x": 4870,
+      "y": -300
+    },
+    "aloldalak": {
+      "kind": "title1",
+      "maxW": 9040,
+      "text": "Aloldalak – a vezető szövegeivel",
+      "x": 0,
+      "y": 3000
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Kezdolap.dc.html",
+    "Mobil.dc.html",
+    "Dokumentumok.dc.html",
+    "Logo.dc.html",
+    "Fejlec.dc.html",
+    "Lablec.dc.html",
+    "Galeria.dc.html",
+    "Kuldetesunk.dc.html",
+    "Celjaink.dc.html",
+    "Ovodarol.dc.html",
+    "OvodaiElet.dc.html",
+    "Szulok.dc.html",
+    "Kapcsolat.dc.html"
+  ],
+  "pages": [],
+  "title": "Bárányka óvoda – új arculat (előzetes)"
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<title>Bárányka – fejléc</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&amp;family=Kavoon&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<header style="position: relative; z-index: 20; width: 100%; box-sizing: border-box; background: #FFFDF7; border-bottom: 2px solid #F0E7D8; font-family: 'Nunito', system-ui, sans-serif; color: #33261D">
+  <div style="max-width: 1320px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
+    <a href="Kezdolap.dc.html" aria-label="Bárányka Keresztyén Óvoda – Kezdőlap" style="display: inline-flex; text-decoration: none">
+      <dc-import name="Logo" meret="54" hint-size="270px,54px"></dc-import>
+    </a>
+    <nav aria-label="Főmenü" style="display: flex; flex-wrap: wrap; align-items: center; gap: 2px">
+      <a href="Kezdolap.dc.html" aria-current="{{m.cimlap.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.cimlap.suly}}; background: {{m.cimlap.hatter}}">Kezdőlap</a>
+      <a href="Kuldetesunk.dc.html" aria-current="{{m.kuldetes.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.kuldetes.suly}}; background: {{m.kuldetes.hatter}}">Küldetésünk</a>
+      <a href="Celjaink.dc.html" aria-current="{{m.celjaink.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.celjaink.suly}}; background: {{m.celjaink.hatter}}">Céljaink</a>
+
+      <div style="position: relative">
+        <button type="button" aria-expanded="{{nyitvaSzoveg}}" aria-controls="ovodankrol-menu" onClick="{{valt}}" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 11px; border: 0; border-radius: 999px; color: #33261D; font-family: 'Nunito', sans-serif; font-size: 16px; cursor: pointer; font-weight: {{m.ovodankrol.suly}}; background: {{m.ovodankrol.hatter}}">
+          Óvodánkról
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#33261D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate({{nyilFok}}deg)"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <sc-if value="{{nyitva}}" hint-placeholder-val="{{ false }}">
+          <div id="ovodankrol-menu" style="position: absolute; top: calc(100% + 10px); left: 0; width: 320px; background: #FFFDF7; border: 2px solid #F0E7D8; border-radius: 20px; box-shadow: 0 14px 34px rgba(51, 38, 29, 0.14); padding: 8px; display: flex; flex-direction: column">
+            <a href="Ovodarol.dc.html" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 14px; color: #33261D; text-decoration: none; background: {{m.ovodarol.hatter}}">
+              <span style="font-weight: 800; font-size: 16px">Az óvodáról</span>
+              <span style="font-size: 14px; color: #5E4E42">Elnevezés, alapelvek, környezet, felszereltség, csoportok</span>
+            </a>
+            <a href="OvodaiElet.dc.html" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 14px; color: #33261D; text-decoration: none; background: {{m.ovodaielet.hatter}}">
+              <span style="font-weight: 800; font-size: 16px">Óvodai életünk</span>
+              <span style="font-size: 14px; color: #5E4E42">Napirend, foglalkozások, zenei nevelés, ünnepek</span>
+            </a>
+          </div>
+        </sc-if>
+      </div>
+
+      <a href="Szulok.dc.html" aria-current="{{m.szulok.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.szulok.suly}}; background: {{m.szulok.hatter}}">Szülőknek</a>
+      <a href="Dokumentumok.dc.html" aria-current="{{m.dokumentumok.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.dokumentumok.suly}}; background: {{m.dokumentumok.hatter}}">Dokumentumok</a>
+      <a href="Kapcsolat.dc.html" aria-current="{{m.kapcsolat.current}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: {{m.kapcsolat.suly}}; background: {{m.kapcsolat.hatter}}">Kapcsolat</a>
+      <a href="https://kecskemetibaptista.hu/" target="_blank" rel="noopener" title="A Kecskeméti Baptista Gyülekezet honlapja (új lapon nyílik)" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 999px; color: #33261D; font-size: 16px; text-decoration: none; font-weight: 700">Gyülekezetünk ↗</a>
+    </nav>
+  </div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"aktiv":{"editor":"enum","default":"cimlap","options":["cimlap","kuldetes","celjaink","ovodarol","ovodaielet","szulok","dokumentumok","kapcsolat"]},"nyitvaAlap":{"editor":"boolean","default":false},"accent":{"editor":"color","default":"#A8D8A0"},"$preview":{"width":1440,"height":90}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const aktiv = this.props.aktiv ?? 'cimlap';
+    const st = this.state || {};
+    const alNyitva = (typeof st.nyitva === 'boolean') ? st.nyitva : (this.props.nyitvaAlap ?? false);
+    const ovodankrol = ['ovodarol', 'ovodaielet'];
+    const jel = (on) => ({ current: on ? 'page' : 'false', suly: on ? 800 : 700, hatter: on ? '#F6EFE2' : 'transparent' });
+    const m = {};
+    ['cimlap', 'kuldetes', 'celjaink', 'dokumentumok', 'kapcsolat', 'ovodarol', 'ovodaielet', 'szulok'].forEach((id) => { m[id] = jel(id === aktiv); });
+    m.ovodankrol = jel(ovodankrol.includes(aktiv) || alNyitva);
+    return {
+      accent: this.props.accent ?? '#A8D8A0',
+      m,
+      nyitva: alNyitva,
+      nyitvaSzoveg: alNyitva ? 'true' : 'false',
+      nyilFok: alNyitva ? 180 : 0,
+      valt: () => this.setState({ nyitva: !alNyitva })
+    };
+  }
+}
+</script>
+</body>
+</html>
