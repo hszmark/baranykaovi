@@ -8,5 +8,5 @@ A `honlap/kepek/galeria/` alatti mappákba képeket lehet feltölteni vagy onnan
 
 ## Dokumentumok frissítése
 
-Cseréld le a fájlt a `honlap/dokumentumok/` mappában egy ugyanolyan nevű új fájlra. A honlap a fájlból olvassa ki a módosítás dátumát, így a „Frissítve” dátum magától átáll.
+Cseréld le a fájlt a `honlap/iratok/` mappában egy ugyanolyan nevű új fájlra. A honlap a fájlból olvassa ki a módosítás dátumát, így a „Frissítve” dátum magától átáll.
 
