@@ -1,31 +1,12 @@
-# Bárányka Keresztyén Óvoda – új honlap
+# Bárányka Keresztyén Óvoda – honlap
 
-A [baranykaovi.hu](https://baranykaovi.hu) megújítása. Az új oldal WordPressen, új tárhelyen fog futni.
+A [baranykaovi.hu](https://baranykaovi.hu) statikus honlapja. Nincs telepítendő program: a `honlap/` mappa tartalmát kell feltölteni a tárhelyre, a rejtett `.htaccess` fájlt is (Finderben Cmd+Shift+. mutatja meg). A `design/terv/` mappában az előzetes Claude-látványterv található, a honlap nem használja.
 
-## Mi van itt
+## Képek a galériákban
 
-A `terv/` mappában az új honlap **előzetes látványterve** van, oldalanként egy fájlban. Ezek tervfájlok, nem a kész WordPress-téma. A WordPress-téma ezek alapján készül majd.
+A `honlap/tartalom/kepek/galeria/` alatti mappákba képeket lehet feltölteni vagy onnan törölni, és ezek automatikusan megjelennek, illetve eltűnnek a honlap galériáiban. A képek fájlnév szerint sorakoznak (például `01_udvar.jpg`, `02_hinta.jpg`).
 
-| Fájl | Tartalom |
-|---|---|
-| `Main.dc.html` | Arculati lap: logó, színek, betűk, elemek |
-| `Kezdolap.dc.html` | Kezdőlap – asztali nézet |
-| `Mobil.dc.html` | Kezdőlap – telefonos nézet |
-| `Kuldetesunk.dc.html` | Küldetésünk |
-| `Celjaink.dc.html` | Céljaink |
-| `Ovodarol.dc.html` | Óvodánkról – Az óvodáról |
-| `OvodaiElet.dc.html` | Óvodánkról – Óvodai életünk |
-| `Szulok.dc.html` | Szülőknek |
-| `Dokumentumok.dc.html` | Dokumentumok, közzétételi lista |
-| `Kapcsolat.dc.html` | Kapcsolat, impresszum |
-| `Fejlec.dc.html`, `Lablec.dc.html`, `Logo.dc.html`, `Galeria.dc.html` | Közös elemek (fejléc, lábléc, logó, képnézegető) |
-| `canvas.json` | A tervvászon elrendezése |
-| `kepek/` | A tervben használt képek |
+## Dokumentumok frissítése
 
-A fájlok a Claude tervvásznának formátumában vannak (`.dc.html`). Böngészőben önmagukban nem jelennek meg teljesen, mert a vászon saját futtatókörnyezetét használják. Az élő terv a Claude-ban nézhető meg.
+Cseréld le a fájlt a `honlap/tartalom/dokumentumok/` mappában egy ugyanolyan nevű új fájlra. A honlap a fájlból olvassa ki a módosítás dátumát, így a „Frissítve” dátum magától átáll.
 
-## Arculat röviden
-
-- Logó: az eredeti „bárány a tenyérben” rajz, felirata Kavoon betűvel
-- Címsorok: Baloo 2, szövegtörzs: Nunito (Google Fonts)
-- Fő színek: pasztellzöld `#A8D8A0`, égkék `#DCEBF2`, gyapjú `#F6EFE2`, logóbarna `#5A4638`, napsugár `#F2B84B`
