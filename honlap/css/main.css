@@ -292,7 +292,7 @@ button {
   display: block;
 }
 
-@media (max-width: 77.99rem) {
+@media (max-width: 66.99rem) {
   .site-header__inner {
     gap: var(--space-2);
   }
@@ -330,28 +330,15 @@ button {
     font-size: var(--text-lg);
   }
 
-  .site-header__cta {
-    order: 1;
-  }
-
-  .menu-toggle {
-    order: 2;
-  }
 }
 
-@media (min-width: 78rem) {
+@media (min-width: 67rem) {
   .menu-toggle {
     display: none;
   }
 }
 
 @media (max-width: 47.99rem) {
-  .site-header .site-header__cta {
-    min-height: var(--tap-target);
-    padding-inline: var(--space-3);
-    font-size: var(--text-sm);
-  }
-
   .menu-toggle__label {
     position: absolute;
     width: 1px;
@@ -617,16 +604,6 @@ button {
   padding: var(--space-6) var(--space-4);
   border-radius: var(--radius-lg);
   background: var(--color-wool);
-}
-
-@media (max-width: 25rem) {
-  .site-header .logo {
-    --logo-size: 2.125rem;
-  }
-
-  .site-header .site-header__cta {
-    padding-inline: var(--space-2);
-  }
 }
 
 /* Components: cards and boxes */

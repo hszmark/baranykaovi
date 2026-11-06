@@ -94,7 +94,7 @@ Ehhez a `dokumentumok.html` fájlt kell szerkeszteni (egyszerű szövegszerkeszt
 
 - **Nincs build lépés.** Kézzel írt HTML, egy CSS-pár és három kis JavaScript-fájl. Helyi kipróbálás: `cd honlap && python3 -m http.server`, majd `http://localhost:8000`. A Python szervere is listázza a mappákat és küldi a `Last-Modified` fejlécet, így a galériák és a dátumok helyben is működnek.
 - **Fejléc és lábléc:** mind a hét oldalon szó szerint ugyanaz a kód. Menüváltozásnál mind a hét fájlt át kell írni (az aktuális oldal linkjén `aria-current="page"` van).
-- **Stílusok:** a `css/tokens.css` tartalmazza az összes színt, térközt, lekerekítést, betűméretet, árnyékot és szélességet CSS-változóként. A `css/main.css` ezekre hivatkozik; benne nem lehet nyers színkód. A töréspontok: 48rem (tablet), 64rem (kétoszlopos oldalelrendezés), 78rem (teljes fejléc, menügomb nélkül).
+- **Stílusok:** a `css/tokens.css` tartalmazza az összes színt, térközt, lekerekítést, betűméretet, árnyékot és szélességet CSS-változóként. A `css/main.css` ezekre hivatkozik; benne nem lehet nyers színkód. A töréspontok: 48rem (tablet), 64rem (kétoszlopos oldalelrendezés), 67rem (teljes fejléc, menügomb nélkül).
 - **Betűk:** a `fonts/` mappában, saját tárhelyről (Nunito, Baloo 2, Kavoon; latin és latin-ext részhalmaz). A licencek (OFL) mellettük vannak.
 - **JavaScript** (a HTML `data-` attribútumaira épül, JS nélkül is használható az oldal):
   - `js/menu.js`: mobilmenü nyitása-zárása.
