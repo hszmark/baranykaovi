@@ -990,9 +990,24 @@ button {
   line-height: 1.2;
 }
 
+.band__text {
+  font-size: var(--text-md);
+  line-height: 1.65;
+}
+
+@media (max-width: 47.99rem) {
+  .band__inner {
+    padding-inline: var(--space-2);
+  }
+}
+
 @media (min-width: 48rem) {
   .band__inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+
+  .band__text {
+    font-size: var(--text-lg);
   }
 }
 
