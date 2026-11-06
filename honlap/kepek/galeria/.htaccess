@@ -1,0 +1,5 @@
+# The gallery script builds each gallery from the folder listing,
+# so listings are switched on for this folder and its subfolders only.
+Options +Indexes
+IndexOptions Charset=UTF-8
+IndexIgnore .* *.txt *.pdf *.doc *.docx *.html *.php *.zip

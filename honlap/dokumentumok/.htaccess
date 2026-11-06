@@ -1,0 +1,7 @@
+# Documents keep the same filename when replaced, so browsers must revalidate
+# instead of serving an old copy from cache.
+<IfModule mod_headers.c>
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
