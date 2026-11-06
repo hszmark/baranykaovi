@@ -25,6 +25,8 @@ When a page is added, removed or renamed:
 - Update the main navigation and footer links on every page.
 - Give the page the same `<head>` set as the others: `<title>` ("Oldal – Bárányka Keresztyén Óvoda"), `meta description`, `canonical`, the `og:*` tags and `twitter:card`. `og:title` and `og:description` match the title and description, and `canonical` and `og:url` use the absolute `https://baranykaovi.hu/` URL.
 
+Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek` from `szuloknek.html` and 301-redirects `/szuloknek.html` to `/szuloknek` and `/index.html` to `/`. Internal links, `canonical`, `og:url` and `sitemap.xml` use the extensionless form (`href="szuloknek"`, `href="./"` for the home page). `/dokumentumok` (page) and `/dokumentumok/` (PDF folder) share a name, so the page rule must not skip existing directories.
+
 `honlap/kepek/og-image.png` (1200×630) shows the header logo on `--color-bg`. To regenerate it, render a 1200×630 page that loads `css/tokens.css` and `css/main.css` and shows the `.logo` markup, then screenshot it with headless Chrome (`--window-size=1200,630 --screenshot`).
 
 ## Styling
@@ -50,11 +52,12 @@ When a page is added, removed or renamed:
 
 ## Checking changes
 
-- Preview with `python3 -m http.server` run from `honlap/`. Opening the files directly does not work: galleries need the folder listing and dates need `Last-Modified`.
+- Preview with `python3 serve.py` from the repo root (http://localhost:8000/). It is `http.server` plus extensionless page addresses. Opening the files directly does not work: galleries need the folder listing and dates need `Last-Modified`.
 - Check every changed page at 360, 390, 768, 1024 and 1440px, with no horizontal scrolling at 360px.
 - Pages must pass the W3C Nu validator and score at least 95 for accessibility in Lighthouse.
 - When a change affects how staff update the site, update `README.md` in the same commit.
 
 ## Deploying
 
+- `honlap/.htaccess` is hidden in Finder (Cmd+Shift+.) and must be uploaded too.
 - After the first upload, upload only changed files. The host stamps every uploaded file with the upload time, so re-uploading the whole folder resets every document's "Frissítve" date.

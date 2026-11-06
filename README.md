@@ -1,6 +1,6 @@
 # Bárányka Keresztyén Óvoda – honlap
 
-A [baranykaovi.hu](https://baranykaovi.hu) statikus honlapja. Nincs telepítendő program: a `honlap/` mappa tartalmát kell feltölteni a tárhelyre. A `design/terv/` mappában az előzetes Claude-látványterv található, a honlap nem használja.
+A [baranykaovi.hu](https://baranykaovi.hu) statikus honlapja. Nincs telepítendő program: a `honlap/` mappa tartalmát kell feltölteni a tárhelyre, a rejtett `.htaccess` fájlt is (Finderben Cmd+Shift+. mutatja meg). A `design/terv/` mappában az előzetes Claude-látványterv található, a honlap nem használja.
 
 ## Képek a galériákban
 
