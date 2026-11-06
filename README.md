@@ -87,8 +87,9 @@ Ehhez a `dokumentumok.html` fájlt kell szerkeszteni (egyszerű szövegszerkeszt
 
 1. Nyissa meg böngészőben: `https://baranykaovi.hu/kepek/galeria/kornyezetunk/`. Ha fájllistát lát, a galériák működnek.
 2. Ha „403 Forbidden” vagy „500” hibát kap, a tárhely nem engedi a mappák listázását. Ilyenkor törölje a `kepek/galeria/.htaccess` fájlt, és kérje a Hostinger ügyfélszolgálatát, hogy engedélyezze a könyvtárlistázást (Indexes) ehhez a mappához. Addig a galériák helyén egy „Képek megtekintése” link jelenik meg.
-3. A honlap nyilvánossá tétele előtt töltse fel az összes PDF-et a fenti táblázat szerinti néven, különben a dokumentumlinkek hibaoldalra vezetnek.
-4. Ellenőrizze a Kapcsolat oldal impresszumában a tárhelyszolgáltató adatait.
+3. Nyisson meg egy dokumentumot a Dokumentumok oldalról. Ha „500” hibát kap, a tárhely nem engedi a `Header` beállítást: törölje a `dokumentumok/.htaccess` fájlt. A dokumentumok így is működnek, csak a böngésző néha a régi példányt mutathatja egy csere után.
+4. A honlap nyilvánossá tétele előtt töltse fel az összes PDF-et a fenti táblázat szerinti néven, különben a dokumentumlinkek hibaoldalra vezetnek.
+5. Ellenőrizze a Kapcsolat oldal impresszumában a tárhelyszolgáltató adatait.
 
 ## Fejlesztőknek
 

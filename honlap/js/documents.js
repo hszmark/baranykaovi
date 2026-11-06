@@ -14,7 +14,8 @@
       if (!modified || Number.isNaN(modified.getTime())) return;
 
       const time = document.createElement("time");
-      time.dateTime = modified.toISOString().slice(0, 10);
+      const pad = (n) => String(n).padStart(2, "0");
+      time.dateTime = `${modified.getFullYear()}-${pad(modified.getMonth() + 1)}-${pad(modified.getDate())}`;
       time.textContent = dateFormat.format(modified);
       target.replaceChildren("Frissítve: ", time);
       target.hidden = false;
