@@ -2,6 +2,12 @@
 
 Static site for https://baranykaovi.hu. The contents of `honlap/` are uploaded as-is to Hostinger (Apache). There is no build step, framework or package manager. `design/terv/` is the original mockup and is not used by the site.
 
+## Language
+
+- Code is English: CSS classes, JS identifiers, code comments, commit messages and PR text.
+- Everything visitors or staff read is Hungarian: page text, `alt` text, ARIA labels and `README.md` (the staff guide).
+- Names staff see or type are Hungarian ASCII: page files (`szuloknek.html`), content folders (`kepek/galeria/kornyezetunk/`) and document files (`hazirend.pdf`).
+
 ## Content
 
 - All visible text is Hungarian (`lang="hu"`). Keep the existing tone and typography: „…” quotes, en dash (–) for ranges and title separators.
@@ -25,8 +31,30 @@ When a page is added, removed or renamed:
 
 - All colors, spacing, radii, font sizes, shadows and layout widths live in `honlap/css/tokens.css`. Use the tokens and do not hard-code values in `main.css`.
 - Fonts are self-hosted in `honlap/fonts/`.
+- No inline `style=""` attributes, and no hex colors or px values in `main.css` except 1–3px borders. Check with `grep -nE '#[0-9a-fA-F]{3,8}\b' honlap/css/main.css` and `grep -n 'style="' honlap/*.html`.
+- Media queries cannot read custom properties, so the breakpoints are literals: 48rem, 64rem and 67rem. 67rem is the measured width of the logo plus the full menu. When a menu item is added or renamed, re-measure it and update the breakpoint in `main.css` and the comment in `tokens.css`.
+
+## Scripts and accessibility
+
+- Every page must work without JavaScript: the menu wraps, galleries show their "Képek megtekintése" link, and documents show without dates.
+- `js/menu.js`, `js/gallery.js` and `js/documents.js` are plain scripts with no modules or libraries. They bind to `data-` attributes and load with `defer`, only on the pages that use them.
+- Links with `target="_blank"` carry a visually hidden „(új lapon nyílik)” note.
+- Do not add a `package.json`, build step, bundler or minification.
 
 ## Documents and galleries
 
 - Every `dokumentumok/*.pdf` link must point to a file that exists in `honlap/dokumentumok/`. The "Frissítve" date is read from the file's `Last-Modified` header by `js/documents.js`, so replacements keep the same filename.
 - Gallery images are picked up automatically from the folders under `honlap/kepek/galeria/` and sorted by filename (`js/gallery.js`).
+- Document filenames never contain dates; the date comes from the file itself.
+- Gallery photos are JPG or WebP (never HEIC), at most about 2000px on the long edge, with an `01_`, `02_` … prefix that sets the order.
+
+## Checking changes
+
+- Preview with `python3 -m http.server` run from `honlap/`. Opening the files directly does not work: galleries need the folder listing and dates need `Last-Modified`.
+- Check every changed page at 360, 390, 768, 1024 and 1440px, with no horizontal scrolling at 360px.
+- Pages must pass the W3C Nu validator and score at least 95 for accessibility in Lighthouse.
+- When a change affects how staff update the site, update `README.md` in the same commit.
+
+## Deploying
+
+- After the first upload, upload only changed files. The host stamps every uploaded file with the upload time, so re-uploading the whole folder resets every document's "Frissítve" date.
