@@ -292,7 +292,7 @@ button {
   display: block;
 }
 
-@media (max-width: 66.99rem) {
+@media (max-width: 69.99rem) {
   .site-header__inner {
     gap: var(--space-2);
   }
@@ -332,7 +332,7 @@ button {
 
 }
 
-@media (min-width: 67rem) {
+@media (min-width: 70rem) {
   .menu-toggle {
     display: none;
   }
@@ -626,10 +626,6 @@ button {
   flex-direction: column;
   gap: var(--space-1);
   line-height: 1.4;
-}
-
-.stat--green {
-  background: var(--color-green-soft);
 }
 
 .stat__value {

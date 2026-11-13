@@ -1,6 +1,9 @@
 Options -MultiViews
 RewriteEngine On
 
+# The Szülőknek page was renamed to Nyitott óvoda.
+RewriteRule ^szuloknek(\.html)?$ /nyitott-ovoda [R=301,L]
+
 RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?]
 RewriteRule ^ / [R=301,L]
 

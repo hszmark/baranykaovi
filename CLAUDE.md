@@ -6,7 +6,7 @@ Static site for https://baranykaovi.hu. The contents of `honlap/` are uploaded a
 
 - Code is English: CSS classes, JS identifiers, code comments, commit messages and PR text.
 - Everything visitors or staff read is Hungarian: page text, `alt` text, ARIA labels and `README.md` (the staff guide).
-- Names staff see or type are Hungarian ASCII: page files (`szuloknek.html`), content folders (`tartalom/kepek/galeria/kornyezetunk/`) and document files (`hazirend.pdf`).
+- Names staff see or type are Hungarian ASCII: page files (`nyitott-ovoda.html`), content folders (`tartalom/kepek/galeria/kornyezetunk/`) and document files (`hazirend.pdf`).
 
 ## Content
 
@@ -25,7 +25,7 @@ When a page is added, removed or renamed:
 - Update the main navigation and footer links on every page.
 - Give the page the same `<head>` set as the others: `<title>` ("Oldal – Bárányka Keresztyén Óvoda"), `meta description`, `canonical`, the `og:*` tags and `twitter:card`. `og:title` and `og:description` match the title and description, and `canonical` and `og:url` use the absolute `https://baranykaovi.hu/` URL.
 
-Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek` from `szuloknek.html` and 301-redirects `/szuloknek.html` to `/szuloknek` and `/index.html` to `/`. Internal links, `canonical`, `og:url` and `sitemap.xml` use the extensionless form (`href="szuloknek"`, `href="./"` for the home page). A page and a folder must never share a name: the server adds a trailing slash to the folder before the rewrite runs, so the page becomes unreachable. That is why everything staff edit lives under `honlap/tartalom/` (`kepek/`, `dokumentumok/`); the other top-level folders (`css/`, `js/`, `fonts/`) have English names that cannot match a Hungarian page name.
+Page addresses have no `.html` extension. `honlap/.htaccess` serves `/nyitott-ovoda` from `nyitott-ovoda.html` and 301-redirects `/nyitott-ovoda.html` to `/nyitott-ovoda` and `/index.html` to `/`. Internal links, `canonical`, `og:url` and `sitemap.xml` use the extensionless form (`href="nyitott-ovoda"`, `href="./"` for the home page). A page and a folder must never share a name: the server adds a trailing slash to the folder before the rewrite runs, so the page becomes unreachable. That is why everything staff edit lives under `honlap/tartalom/` (`kepek/`, `dokumentumok/`); the other top-level folders (`css/`, `js/`, `fonts/`) have English names that cannot match a Hungarian page name.
 
 `honlap/tartalom/kepek/og-image.png` (1200×630) shows the header logo on `--color-bg`. To regenerate it, render a 1200×630 page that loads `css/tokens.css` and `css/main.css` and shows the `.logo` markup, then screenshot it with headless Chrome (`--window-size=1200,630 --screenshot`).
 
@@ -34,7 +34,7 @@ Page addresses have no `.html` extension. `honlap/.htaccess` serves `/szuloknek`
 - All colors, spacing, radii, font sizes, shadows and layout widths live in `honlap/css/tokens.css`. Use the tokens and do not hard-code values in `main.css`.
 - Fonts are self-hosted in `honlap/fonts/`.
 - No inline `style=""` attributes, and no hex colors or px values in `main.css` except 1–3px borders. Check with `grep -nE '#[0-9a-fA-F]{3,8}\b' honlap/css/main.css` and `grep -n 'style="' honlap/*.html`.
-- Media queries cannot read custom properties, so the breakpoints are literals: 48rem, 64rem and 67rem. 67rem is the measured width of the logo plus the full menu. When a menu item is added or renamed, re-measure it and update the breakpoint in `main.css` and the comment in `tokens.css`.
+- Media queries cannot read custom properties, so the breakpoints are literals: 48rem, 64rem and 70rem. 70rem is the measured width of the logo plus the full menu, plus room for a classic scrollbar. When a menu item is added or renamed, re-measure it and update the breakpoint in `main.css` and the comment in `tokens.css`.
 
 ## Scripts and accessibility
 

@@ -6,7 +6,8 @@
   literals in main.css:
     48rem  tablet: side previews in galleries, wider cards
     64rem  desktop: two-column page layout, sticky contents box
-    67rem  full header: all menu items on one row, no menu toggle
+    70rem  full header: all menu items on one row, no menu toggle
+           (measured menu width plus room for a classic scrollbar)
 */
 
 :root {
