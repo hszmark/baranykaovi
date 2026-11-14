@@ -38,7 +38,16 @@
     }, { passive: true });
   }
 
-  async function listImages(folderPath) {
+  // An album folder is read by both its cover card and its photo grid,
+  // so each folder listing is fetched only once per page.
+  const listings = new Map();
+
+  function listImages(folderPath) {
+    if (!listings.has(folderPath)) listings.set(folderPath, fetchImages(folderPath));
+    return listings.get(folderPath);
+  }
+
+  async function fetchImages(folderPath) {
     const response = await fetch(folderPath, { cache: "no-cache" });
     if (!response.ok) throw new Error(`${folderPath}: HTTP ${response.status}`);
 
@@ -189,7 +198,160 @@
     show(0);
   }
 
+  function renderGrid(root, images) {
+    const name = root.dataset.galleryName || "Képek";
+    const count = images.length;
+    const initial = Number(root.dataset.galleryInitial) || count;
+    const altFor = (i) => `${name} – ${i + 1}. kép`;
+    const list = element("ul", "photo-grid__list");
+    const buttons = [];
+    let index = 0;
+    let more = null;
+
+    images.forEach((image, i) => {
+      const item = element("li", "photo-grid__item");
+      const button = element("button", "photo-grid__open", { type: "button", "aria-label": `${altFor(i)} – nagyítás` });
+      const photo = element("img", "", { src: image.src, alt: altFor(i), loading: "lazy", decoding: "async" });
+      button.append(photo);
+      button.addEventListener("click", () => {
+        index = i;
+        lightbox.open(gallery);
+      });
+      item.append(button);
+      item.hidden = i >= initial;
+      buttons.push(button);
+      list.append(item);
+    });
+    root.append(list);
+
+    function revealAll() {
+      for (const button of buttons) button.parentElement.hidden = false;
+      if (more) more.remove();
+      more = null;
+    }
+
+    if (count > initial) {
+      more = element("button", "button button--outline photo-grid__more", { type: "button" });
+      more.textContent = `További képek (${count - initial})`;
+      more.addEventListener("click", () => {
+        revealAll();
+        buttons[initial].focus();
+      });
+      root.append(more);
+    }
+
+    const gallery = {
+      name,
+      count,
+      slide: () => ({ src: images[index].src, alt: altFor(index), counter: `${index + 1} / ${count}` }),
+      step: (direction) => {
+        index = (index + direction + count) % count;
+        lightbox.sync(gallery);
+      },
+      focusTrigger: () => {
+        if (buttons[index].parentElement.hidden) revealAll();
+        buttons[index].focus();
+      },
+    };
+  }
+
+  async function initGrid(root) {
+    const fallback = root.querySelector(".gallery__fallback");
+    if (fallback) fallback.hidden = true;
+
+    try {
+      const images = await listImages(root.dataset.gallery);
+      if (images.length === 0) {
+        const section = root.closest("[data-gallery-section]") || root;
+        section.hidden = true;
+        return;
+      }
+      renderGrid(root, images);
+    } catch (error) {
+      if (fallback) fallback.hidden = false;
+      console.warn("A galéria képei nem tölthetők be:", error);
+    }
+  }
+
+  // Album cards on the gallery page show the album's first photo and its
+  // photo count. An empty album says "Hamarosan" and stops being a link.
+  async function initAlbumCard(card) {
+    const cover = card.querySelector(".album-card__cover");
+    const meta = card.querySelector(".album-card__meta");
+
+    let images;
+    try {
+      images = await listImages(card.dataset.album);
+    } catch {
+      return;
+    }
+
+    if (images.length === 0) {
+      card.removeAttribute("href");
+      card.classList.add("is-empty");
+      meta.textContent = "Hamarosan";
+      return;
+    }
+
+    const photo = element("img", "album-card__photo", { src: images[0].src, alt: "", decoding: "async" });
+    cover.append(photo);
+    meta.textContent = `${images.length} kép`;
+  }
+
+  // On the gallery page the album cards work as tabs: only the chosen
+  // album is shown. Without JavaScript every album stays visible and the
+  // cards are plain links to them.
+  function initAlbumTabs(nav) {
+    const cards = [...nav.querySelectorAll("[data-album]")];
+    const albums = cards.map((card) => ({
+      card,
+      section: document.getElementById(card.getAttribute("href").slice(1)),
+      ready: listImages(card.dataset.album).then((images) => images.length > 0, () => true),
+    }));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const fromHash = () => albums.find((album) => `#${album.section.id}` === location.hash);
+
+    function select(album, { scroll = false } = {}) {
+      for (const other of albums) {
+        other.section.hidden = other !== album;
+        if (other.card.hasAttribute("href")) other.card.setAttribute("aria-current", String(other === album));
+        else other.card.removeAttribute("aria-current");
+      }
+      if (scroll && album.section.getBoundingClientRect().top > window.innerHeight * 0.75) {
+        album.section.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+      }
+    }
+
+    // Show only one album straight away so the page does not jump while
+    // the folder listings load.
+    select(fromHash() || albums[0]);
+
+    Promise.all(albums.map((album) => album.ready)).then((filled) => {
+      const available = albums.filter((_, i) => filled[i]);
+      if (available.length === 0) return;
+      const wanted = fromHash();
+      select(available.includes(wanted) ? wanted : available[0]);
+
+      for (const album of available) {
+        album.card.addEventListener("click", (event) => {
+          event.preventDefault();
+          history.replaceState(null, "", `#${album.section.id}`);
+          select(album, { scroll: true });
+        });
+      }
+      window.addEventListener("hashchange", () => {
+        const album = fromHash();
+        if (available.includes(album)) select(album, { scroll: true });
+      });
+    });
+  }
+
   async function initGallery(root) {
+    if (root.dataset.galleryLayout === "grid") {
+      initGrid(root);
+      return;
+    }
+
     const fallback = root.querySelector(".gallery__fallback");
     const stage = element("div", "gallery__stage");
     const frame = element("div", "gallery__frame");
@@ -216,4 +378,6 @@
   }
 
   document.querySelectorAll("[data-gallery]").forEach(initGallery);
+  document.querySelectorAll("[data-album]").forEach(initAlbumCard);
+  document.querySelectorAll("[data-album-tabs]").forEach(initAlbumTabs);
 })();

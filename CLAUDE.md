@@ -34,7 +34,7 @@ Page addresses have no `.html` extension. `honlap/.htaccess` serves `/nyitott-ov
 - All colors, spacing, radii, font sizes, shadows and layout widths live in `honlap/css/tokens.css`. Use the tokens and do not hard-code values in `main.css`.
 - Fonts are self-hosted in `honlap/fonts/`.
 - No inline `style=""` attributes, and no hex colors or px values in `main.css` except 1–3px borders. Check with `grep -nE '#[0-9a-fA-F]{3,8}\b' honlap/css/main.css` and `grep -n 'style="' honlap/*.html`.
-- Media queries cannot read custom properties, so the breakpoints are literals: 48rem, 64rem and 70rem. 70rem is the measured width of the logo plus the full menu, plus room for a classic scrollbar. When a menu item is added or renamed, re-measure it and update the breakpoint in `main.css` and the comment in `tokens.css`.
+- Media queries cannot read custom properties, so the breakpoints are literals: 48rem, 64rem and 75rem. 75rem is the measured width of the logo plus the full menu, plus room for a classic scrollbar. When a menu item is added or renamed, re-measure it and update the breakpoint in `main.css` and the comment in `tokens.css`.
 
 ## Scripts and accessibility
 
