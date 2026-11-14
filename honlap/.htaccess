@@ -12,3 +12,13 @@ RewriteRule ^ /%1 [R=301,L,NE]
 
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L]
+
+# Browsers must check for a newer copy of pages, styles and scripts on
+# every visit. Unchanged files only cost a short "304 Not Modified"
+# answer, and a change shows up at once instead of mixing new pages
+# with old cached styles.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

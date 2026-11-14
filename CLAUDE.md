@@ -60,4 +60,5 @@ Page addresses have no `.html` extension. `honlap/.htaccess` serves `/nyitott-ov
 ## Deploying
 
 - `honlap/.htaccess` is hidden in Finder (Cmd+Shift+.) and must be uploaded too.
+- `honlap/.htaccess` sends `Cache-Control: no-cache` for HTML, CSS and JS, so visitors never combine new pages with old cached styles. Images are cached normally; a replaced photo needs a new filename to show up at once.
 - After the first upload, upload only changed files. The host stamps every uploaded file with the upload time, so re-uploading the whole folder resets every document's "Frissítve" date.
