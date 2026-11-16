@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/menu.js" defer></script>
+  <script src="js/hero-video.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,7 +88,17 @@
   <main id="tartalom">
     <section class="container home-hero">
       <h1>Szeretettel köszöntünk a Bárányka Óvoda honlapján!</h1>
-      <img class="home-hero__image" src="tartalom/kepek/kezdolap.jpg" alt="Az óvoda kertje tavasszal: virágzó fák, kanyargó járda és hinta az épület mellett" width="1800" height="1350" fetchpriority="high">
+      <div class="home-hero__media" data-hero-video>
+        <video class="home-hero__video" autoplay muted loop playsinline poster="tartalom/video/kezdolap-poszter.webp" width="1280" height="720" aria-label="Drónfelvétel az óvoda épületéről és kertjéről">
+          <source src="tartalom/video/kezdolap.webm" type="video/webm; codecs=av01.0.05M.08">
+          <source src="tartalom/video/kezdolap.mp4" type="video/mp4">
+        </video>
+        <button class="home-hero__toggle" type="button" data-hero-video-toggle hidden>
+          <svg class="home-hero__icon-pause" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+          <svg class="home-hero__icon-play" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          <span class="visually-hidden" data-hero-video-label>Videó megállítása</span>
+        </button>
+      </div>
       <div class="home-hero__actions">
         <a class="button button--primary" href="nyitott-ovoda#jelentkezes">Óvodai jelentkezés</a>
       </div>

@@ -39,7 +39,7 @@ Page addresses have no `.html` extension. `honlap/.htaccess` serves `/nyitott-ov
 ## Scripts and accessibility
 
 - Every page must work without JavaScript: the menu wraps, galleries show their "Képek megtekintése" link, and documents show without dates.
-- `js/menu.js`, `js/gallery.js` and `js/documents.js` are plain scripts with no modules or libraries. They bind to `data-` attributes and load with `defer`, only on the pages that use them.
+- `js/menu.js`, `js/gallery.js`, `js/documents.js` and `js/hero-video.js` are plain scripts with no modules or libraries. They bind to `data-` attributes and load with `defer`, only on the pages that use them.
 - Links with `target="_blank"` carry a visually hidden „(új lapon nyílik)” note.
 - Do not add a `package.json`, build step, bundler or minification.
 
